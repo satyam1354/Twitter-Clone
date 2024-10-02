@@ -6,23 +6,24 @@ import { FaUser } from "react-icons/fa";
 import { BsBookmarksFill } from "react-icons/bs";
 import { IoLogOut } from "react-icons/io5";
 import { SiGooglemessages } from "react-icons/si";
+import {Link} from "react-router-dom"
 
 
 
 const LeftSidebar = () => {
   return (
-    <div>
+    <div className='w-[20%]'>
       <div>
         <div >
           <img className='ml-5 ' width={"45px"} src="https://toppng.com/uploads/preview/twitter-logo-png-photo-116617240253ywzn3usl6.png" alt="twitter-logo" />
         </div>
         <div className='m-4'>
-          <div className='flex items-center my-2 px-4 py-2 hover:bg-green-200 hover:cursor-pointer  rounded-full'>
+          <Link to="/" className='flex items-center my-2 px-4 py-2 hover:bg-green-200 hover:cursor-pointer  rounded-full'>
             <div>
               <FaHome size="24px" />
             </div>
             <h1 className="font-bold text-lg ml-2" >Home</h1>
-          </div>
+          </Link>
           <div className='flex items-center my-2 px-4 py-2 hover:bg-green-200 hover:cursor-pointer  rounded-full'>
             <div>
             <FaHashtag  size="24px"  />
@@ -41,12 +42,12 @@ const LeftSidebar = () => {
             </div>
             <h1 className="font-bold text-lg ml-2" >Messages</h1>
           </div>
-          <div className='flex items-center my-2 px-4 py-2 hover:bg-green-200 hover:cursor-pointer  rounded-full'>
+          <Link to="/profile" className='flex items-center my-2 px-4 py-2 hover:bg-green-200 hover:cursor-pointer  rounded-full'>
             <div>
               <FaUser size="24px" />
             </div>
             <h1 className="font-bold text-lg ml-2" >Profile</h1>
-          </div>
+          </Link>
           <div className='flex items-center my-2 px-4 py-2 hover:bg-green-200 hover:cursor-pointer  rounded-full'>
             <div>
               <BsBookmarksFill size="24px" />
