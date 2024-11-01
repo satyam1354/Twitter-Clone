@@ -151,12 +151,7 @@ export const follow = async(req, res)=>{
     return res.status(200).json({
         message:`${loggedInUser.name} just follow to ${user.name}`,
         success: true
-    })
-    // else{
-    //     await user.updateOne({$pull:{followers: loggedInUserId}})
-    //     await loggedInUser.updateOne({$pull:{following: userId}})
-    // }
-   
+    }) 
     } catch (error) {
         console.log(error)
     }
