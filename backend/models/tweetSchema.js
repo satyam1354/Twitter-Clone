@@ -9,10 +9,7 @@ const tweetSchema = new mongoose.Schema({
         type: Array,
         default: [],
     },
-    bookmarks: {
-        type: Array,
-        default: [],
-    },
+   
     userId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "User",
@@ -21,4 +18,4 @@ const tweetSchema = new mongoose.Schema({
    
 }, { timestamps: true });
 
-export const Tweet = mongoose.model(("Tweet", userSchema)); 
+export const Tweet = mongoose.model("Tweet", tweetSchema); 
