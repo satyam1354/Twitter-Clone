@@ -24,12 +24,13 @@ export const Register = async (req, res) => {
         // obj.name = name;
         // let abcd = new User(obj);
         // abcd.save();
-        await User.create({
+        await User.create({ 
             name,
             username,
             email,
             password: hashedPassword
         })
+        console.log("user created successfully")
         return res.status(201).json({
             message: "User Account created successfully.",
             success: true
@@ -48,7 +49,7 @@ export const Login = async (req, res) => {
             })
         };
         const user = await User.findOne({ email })
-        //console.log(user)
+        console.log(user)
         if (!user) {
             return res.status(401).json({
                 message: "User does not exist",
