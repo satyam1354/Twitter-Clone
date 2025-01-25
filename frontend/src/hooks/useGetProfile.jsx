@@ -14,14 +14,14 @@ const useGetProfile =async(id) => {
                 const res =  await axios.get(`${ USER_API_END_POINT}/profile/${id}`,{
                     withCredentials : true
                 })
+                console.log(res)
                 dispatch(getMyProfile(res?.data?.user))
               } catch (error) {
                 console.log(error)
               }
         }
-        fetchMyProfile();
-       
-    }, []);
+        fetchMyProfile(); 
+    }, [id]);
   
 };
 export default useGetProfile;

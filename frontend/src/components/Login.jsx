@@ -30,8 +30,8 @@ const Login = () => {
                      withCredentials : true
                  }
             );
-            dispatch(getUser(res?.data?.user))
-                console.log(res)
+            console.log(res.data.user)
+                //dispatch(getUser(res?.data?.user))
                 if(res.data.success){
                     navigate("/") 
                     toast.success(res.data.message)
@@ -54,7 +54,6 @@ const Login = () => {
                if(res.data.success){
                     toast.success(res.data.message)
                     setIsLogin(true); 
-
                }
             } catch (error) {
                 toast.success(error.response.data.message);

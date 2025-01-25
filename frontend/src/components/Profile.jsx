@@ -1,18 +1,21 @@
 import React from "react";
 import { IoMdArrowBack } from "react-icons/io";
-import { Link } from 'react-router-dom'
+import { Link , useParams} from 'react-router-dom'
 import Avatar from "react-avatar";
 import useGetProfile from '../hooks/useGetProfile';
-import { useSelector } from 'react-redux';
-
-
+import { useSelector } from 'react-redux';  
 
 const Profile = () => {
 
     // custom hoooks
-    const { user } = useSelector(store => store.user)
-console.log(user?._id)
-    useGetProfile(user?._id);
+    const { user, profile } = useSelector(store => store.user)
+    console.log("user")
+    console.log(profile) 
+
+    const {id} = useParams()
+    useGetProfile(id); 
+
+    //useGetProfile(user?._id);
 
 
     return (
@@ -23,7 +26,7 @@ console.log(user?._id)
                         <IoMdArrowBack size="24px" />
                     </Link>
                     <div className="ml-2">
-                        <h1 className="font-bold text-lg">Satyam</h1>
+                        <h1 className="font-bold text-lg">{profile?.name}</h1>
                         <p className="text-gray-500 text-sm">99999 posts</p>
                     </div>
                 </div>
@@ -36,9 +39,9 @@ console.log(user?._id)
                     <button className="px-4 py-1 font-bold hover:bg-gray-200 rounded-full border border-gray-400 cursor:pointer">Edit Profile</button>
                 </div>
                 <div className="m-4">
-                    <h1 className="font-bold text-xl">ssatyam</h1>
-                    <p>@samchoudhary</p>
-                </div>
+                    <h1 className="font-bold text-xl">{profile?.name}</h1>
+                    <p>{`@${profile?.username}`}</p>
+                </div>  
                 <div className="m-4 text-sm">
                     <p>exploring the endless possiblities of universe. i am in a mood to go to other planets to esplore the universe</p>
                 </div>
