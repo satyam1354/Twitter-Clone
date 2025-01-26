@@ -21,7 +21,7 @@ const useGetProfile =async(id) => {
               }
         }
         fetchMyProfile(); 
-    }, [id]);
+    }, [id]); 
   
 };
 export default useGetProfile;

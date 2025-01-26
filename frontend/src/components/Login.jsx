@@ -4,6 +4,7 @@ import { USER_API_END_POINT } from '../utils/constant'
 import toast  from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import { getUser } from "../redux/userSlice";
 
 const Login = () => {
     const [isLogin, setIsLogin] = useState(true)
@@ -30,14 +31,15 @@ const Login = () => {
                      withCredentials : true
                  }
             );
-            console.log(res.data.user)
-                //dispatch(getUser(res?.data?.user))
+            console.log(res.data)
+                dispatch(getUser(res?.data?.user))
                 if(res.data.success){
                     navigate("/") 
                     toast.success(res.data.message)
                }
             } catch (error) {
-                toast.success(error.response.data.message);
+                //toast.success(error.response.data.message);
+                toast.success('Invalid Credentials')
                 console.log(error)
             } 
         } else { //signup

@@ -1,10 +1,11 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 import { CiSearch } from "react-icons/ci";
 import Avatar from 'react-avatar'
 
 
 const RightSidebar = ({ otherUsers }) => {
-    console.log("otherUserss", otherUsers)
+    //console.log("otherUserss", otherUsers)
     return (
         <div className="w-[20%]">
             <div className=" flex items-center p-2 bg-gray-100 rounded-full outline-none">

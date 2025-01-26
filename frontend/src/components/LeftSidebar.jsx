@@ -11,9 +11,10 @@ import { useSelector } from 'react-redux';
 
 
 
-const LeftSidebar = () => {
+const LeftSidebar = ({userProfile}) => {
  // const {id} = useParams()
-  const {user} = useSelector(store=>store.id)
+  //const {user} = useSelector(store=>store.user)
+ // console.log("user-----------------", user)
   
   return (
     <div className='w-[20%]'>
@@ -46,12 +47,12 @@ const LeftSidebar = () => {
             </div>
             <h1 className="font-bold text-lg ml-2" >Messages</h1>
           </div>
-          <Link to={`/profile/${user?._id}`} className='flex items-center my-2 px-4 py-2 hover:bg-green-200 hover:cursor-pointer  rounded-full'>
+         <Link to={userProfile?._id ? `/profile/${userProfile._id}` : '/profile/default'} className='flex items-center my-2 px-4 py-2 hover:bg-green-200 hover:cursor-pointer  rounded-full'>
             <div>
               <FaUser size="24px" />
             </div>
             <h1 className="font-bold text-lg ml-2" >Profile</h1>
-          </Link>
+          </Link> 
           <div className='flex items-center my-2 px-4 py-2 hover:bg-green-200 hover:cursor-pointer  rounded-full'>
             <div>
               <BsBookmarksFill size="24px" />

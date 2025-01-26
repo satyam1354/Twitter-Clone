@@ -9,11 +9,12 @@ const Profile = () => {
 
     // custom hoooks
     const { user, profile } = useSelector(store => store.user)
-    console.log("user")
-    console.log(profile) 
+    // console.log("profiles")
+    // console.log("profile", profile)
+    // console.log("user", user) 
 
-    const {id} = useParams()
-    useGetProfile(id); 
+    // const {id} = useParams()
+    // useGetProfile(id); 
 
     //useGetProfile(user?._id);
 

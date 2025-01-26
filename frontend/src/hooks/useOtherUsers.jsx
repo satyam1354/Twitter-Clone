@@ -9,16 +9,16 @@ const useOtherUsers = (id) => {
     useEffect(() => {
         const fetchOtherUsers = async () => {
             try {
-                const res = await axios.get(`${USER_API_END_POINT}/otheruser/${id}`, {
+                const res = await axios.get(`${USER_API_END_POINT}/otherUser/${id}`, {
                     withCredentials: true
                 });
                 console.log(res)
-                dispatch(getOtherUsers(res.data.otherUsers))
+                dispatch(getOtherUsers(res?.data?.otherUsers))
             } catch (error) {
                 console.log(error)
             }
         }
         fetchOtherUsers()
-    }, []);
+    }, [id]);
 }
 export default useOtherUsers
