@@ -6,6 +6,7 @@ import { Outlet } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import useOtherUsers from '../hooks/useOtherUsers';
 import useGetProfile from '../hooks/useGetProfile';
+import useGetMyTweets from '../hooks/useGetMyTweets';
 
 
 const Home = () => {
@@ -15,14 +16,16 @@ const Home = () => {
     console.log("user",  user)
     console.log("profile", profile)
     console.log("otherUsers",otherUsers)
+
     useOtherUsers(user?._id)
     useGetProfile(user?._id)
+    useGetMyTweets(user?._id)
 
      
     return(
         <div className='flex justify-between w-[80%] mx-auto'>
              <LeftSidebar userProfile={profile}/>
-             <Outlet/>  
+             <Outlet/>   
                {/* //instead of body c, render children conditionaly*/}
              <RightSidebar otherUsers = {otherUsers}/>
         </div>

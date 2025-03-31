@@ -1,9 +1,35 @@
-import React from 'react'
+import axios from 'axios';
+import React, { useState } from 'react'
 import Avatar from 'react-avatar'
 import { FaImages } from "react-icons/fa6";
-
+import { TWEET_API_END_POINT } from '../utils/constant';
+import toast from 'react-hot-toast'
+import { useDispatch, useSelector } from 'react-redux';
+import { getRefresh } from '../redux/tweetSlice';
 
 const CreatePost = () => {
+    const [description, setDescription] = useState("");
+    const {user} = useSelector(store=>store.user)
+    const dispatch = useDispatch()
+
+    const submitHandler = async(e) => {
+        try {
+            const res = await axios.post(`${TWEET_API_END_POINT}/create`, {description, id:user?._id},
+                {
+                    withCredentials: true
+                });
+                dispatch(getRefresh());
+                console.log(res)
+                if(res.data.success){
+                    toast.success(res.data.message)
+                }
+
+        } catch (error) {
+            toast.error(error.res.data.message)
+            console.log(error)
+        }
+           setDescription(""); 
+    }
     return (
         <div className='w-[100%]'>
             <div>
@@ -20,13 +46,13 @@ const CreatePost = () => {
                         <div>
                           <Avatar src="https://wallpaperaccess.com/full/3264020.jpg" size="40" round={true} />
                         </div>
-                        <input className='w-full outline-none border-none text-xl ml-2'  type="text" placeholder="what is happening??"/>
+                        <input value={description} onChange={(e)=>setDescription(e.target.value)} className='w-full outline-none border-none text-xl ml-2'  type="text" placeholder="what is happening??"/>
                     </div>
                     <div className='flex items-center justify-between p-4 border-b border-gray-300' >
                         <div>
                         <FaImages  size="24px"/>
                         </div>
-                        <button className='bg-[#1D9BF0] text-lg text-white px-4 py-1 border-none rounded-full'>Post</button>
+                        <button onClick={submitHandler} className='bg-[#1D9BF0] text-lg text-white px-4 py-1 border-none rounded-full'>Post</button>
                     </div>
                 </div>
             </div>

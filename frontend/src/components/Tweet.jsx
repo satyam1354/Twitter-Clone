@@ -5,26 +5,26 @@ import { CiHeart } from "react-icons/ci";
 import { CiBookmark } from "react-icons/ci";
 
 
-const Tweet = () => {
+const Tweet = ({tweet}) => {
     return (
         <div className='border-b border-gray-200'>
             <div>
                 <div className='flex p-4 '>
                     <Avatar src="https://wallpaperaccess.com/full/3264020.jpg" size="40" round={true} />
                     <div className='ml-2 w-full'>
-                        <div className='flex items-center'>
-                            <h1 className='font-bold '>Shamb sinha</h1>
-                            <p className='text-gray-500 text-sm ml-1'>@korean  .1m</p>
+                        <div className='flex items-center'> 
+                            <h1 className='font-bold '>{tweet?.userDetails[0]?.name}</h1>
+                            <p className='text-gray-500 text-sm ml-1'>{`@${tweet?.userDetails[0]?.username}  . 1m`} </p>
                         </div>
                         <div className=''>
-                            <p>Hello developers lets connect together</p>
+                            <p>{tweet?.description}</p>
                         </div>
                         <div className='flex align-items justify-between my-3'>
                             <div className='flex items-center'>
                                 <div className='p-2 hover:bg-green-200 rounded-full cursor-pointer'>
                                     <FaRegComment size="20px" />
                                 </div>
-                                <p className='hover:text-green-400' >0</p>
+                                <p className='hover:text-green-400' >{tweet?.likes?.length}</p>
                             </div>
                             <div className='flex items-center'>
                                 <div className='p-2 hover:bg-pink-200 rounded-full cursor-pointer'>

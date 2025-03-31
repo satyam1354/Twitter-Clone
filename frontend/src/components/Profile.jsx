@@ -18,7 +18,6 @@ const Profile = () => {
 
     //useGetProfile(user?._id);
 
-
     return (
         <div className="w-[50%] border-l border-r border-gray-300">
             <div>

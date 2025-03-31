@@ -12,7 +12,7 @@ import { useSelector } from 'react-redux';
 
 
 const LeftSidebar = ({userProfile}) => {
- // const {id} = useParams()
+  
   //const {user} = useSelector(store=>store.user)
  // console.log("user-----------------", user)
   

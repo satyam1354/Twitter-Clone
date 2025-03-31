@@ -45,7 +45,7 @@ export const Login = async (req, res) => {
         if (!email || !password) {
             return res.status(401).json({
                 message: "All fields are required...",
-                message: false
+                success: false
             })
         };
         const user = await User.findOne({ email })
