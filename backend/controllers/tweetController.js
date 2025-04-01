@@ -3,6 +3,7 @@ import { User } from '../models/userSchema.js';
 
 export const createTweet  = async (req, res) => {
     try {
+        console.log(req.body)
         const { description, id } = req.body;
         if (!description || !id) {
             return res.status(401).json({
@@ -46,13 +47,15 @@ export const likeOrDislike = async (req, res)=>{
             //dislike
             await Tweet.findByIdAndUpdate(tweetId, {$pull:{like:loggedInUserId}});
             return res.status(200).json({
-                message:"user disliked your tweet.."
+                message:"user disliked your tweet..",
+                success: true
             })
         }else{
             //like
             await Tweet.findByIdAndUpdate(tweetId, {$push:{like:loggedInUserId}});
             return res.status(200).json({
-                message:"user liked your tweet.."
+                message:"user liked your tweet..",
+                success: true
             })
         }
      } catch (error) {

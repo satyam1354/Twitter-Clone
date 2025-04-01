@@ -12,10 +12,10 @@ import useGetMyTweets from '../hooks/useGetMyTweets';
 const Home = () => {
      //custom hook
     const {user, profile,otherUsers} = useSelector(store=>store.user)
-     console.log("useers and otherusers")
-    console.log("user",  user)
-    console.log("profile", profile)
-    console.log("otherUsers",otherUsers)
+    //  console.log("useers and otherusers")
+    // console.log("user",  user)
+    // console.log("profile", profile)
+    // console.log("otherUsers",otherUsers)
 
     useOtherUsers(user?._id)
     useGetProfile(user?._id)

@@ -12,17 +12,17 @@ const useGetMyTweets =async(id) => {
     useEffect(()=>{
         const fetchMyTweets = async ()=>{
             try {
-                const res =  await axios.get(`${ TWEET_API_END_POINT}/alltweets/${id}`,{
+                const res =  await axios.get(`${TWEET_API_END_POINT}/getalltweet/${id}`,{
                     withCredentials : true
                 })
-                console.log(res)
+                console.log("tweets " ,  res)
                 dispatch(getAllTweets(res?.data?.tweets))
               } catch (error) {
                 console.log(error)
               }
         }
         fetchMyTweets(); 
-    }, [id, refresh]); 
+    }, [refresh]); 
   
 };
 export default useGetMyTweets;
