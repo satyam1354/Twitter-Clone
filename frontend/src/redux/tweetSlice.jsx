@@ -1,9 +1,11 @@
 import {createSlice} from '@reduxjs/toolkit'
+import { act } from 'react';
 const tweetSlice = createSlice({
         name:"tweet",
         initialState:{
             tweets: null,
-            refresh:false
+            refresh:false,
+            isActive: true
         },
         reducers:{
             getAllTweets: (state, action)=>{
@@ -11,8 +13,11 @@ const tweetSlice = createSlice({
             },
             getRefresh:(state)=>{
                 state.refresh = !state.refresh
+            },
+            getIsActive:(state, action)=>{
+                state.isActive = action.payload
             }
         }
 });
-export const {getAllTweets, getRefresh} = tweetSlice.actions;
+export const {getAllTweets, getRefresh, getIsActive} = tweetSlice.actions;
 export default tweetSlice.reducer;
