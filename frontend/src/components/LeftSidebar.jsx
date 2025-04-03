@@ -29,10 +29,10 @@ const LeftSidebar = () => {
       axios.defaults.withCredentials = true
       const res = await axios.get(`${USER_API_END_POINT}/logout`)
       console.log(res)
-      // dispatch(getUser(null))
-      // dispatch(getMyProfile(null))
-      // dispatch(getOtherUsers(null))
-      // dispatch(getAllTweets(null))
+      dispatch(getUser(null))
+      dispatch(getMyProfile(null))
+      dispatch(getOtherUsers(null))
+      dispatch(getAllTweets(null))
       navigate("/login")
       toast.success(res?.data?.message)
       

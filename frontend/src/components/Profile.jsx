@@ -8,6 +8,7 @@ import axios from "axios";
 import { TWEET_API_END_POINT, USER_API_END_POINT } from "../utils/constant";
 import toast from "react-hot-toast";
 import { getRefresh } from "../redux/tweetSlice";
+import { followingUpdate } from "../redux/userSlice";
 
 const Profile = () => {
 
@@ -36,7 +37,7 @@ const Profile = () => {
             }
         } else {
             ///follow
-            try {        
+            try {         
                 console.log("not inc")   
                 axios.defaults.withCredentials = true
                 const res = await axios.post(`${USER_API_END_POINT}/follow/${id}`, { id: user?._id })
