@@ -11,20 +11,20 @@ import { getRefresh } from "../redux/tweetSlice";
 
 const Profile = () => {
 
-    // custom hoooks
-    const { user, profile , } = useSelector(store => store.user)
-    // console.log("profiles")
-    // console.log("profile", profile)
-    // console.log("user", user) 
-
+    const { user, profile } = useSelector(store => store.user)
+    // console.log("profile page", profile)
+    console.log("user", user) 
     const { id } = useParams()
-    //useGetProfile(id);
-const dispatch = useDispatch();
+    useGetProfile(id);
 
-    const followUnfollowHandler = async (id) => {
+    const dispatch = useDispatch();
+
+    const followUnfollowHandler = async () => {
+        console.log(id)
         if (user.following.includes(id)) {
             //unfollow
             try {
+                console.log("includes")   
                 axios.defaults.withCredentials = true;
                 const res = await axios.post(`${USER_API_END_POINT}/unfollow/${id}`, { id: user?._id })
                 console.log(res)
@@ -36,7 +36,8 @@ const dispatch = useDispatch();
             }
         } else {
             ///follow
-            try {
+            try {        
+                console.log("not inc")   
                 axios.defaults.withCredentials = true
                 const res = await axios.post(`${USER_API_END_POINT}/follow/${id}`, { id: user?._id })
                 console.log(res)
@@ -44,6 +45,7 @@ const dispatch = useDispatch();
                 dispatch(getRefresh())
                 toast.success(res?.data?.message)
             } catch (error) {
+                console.log("error")
                 toast.error(error.response.data.message)
             }
         }

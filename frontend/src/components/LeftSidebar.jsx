@@ -16,11 +16,13 @@ import { getAllTweets } from '../redux/tweetSlice';
 
 
 
-const LeftSidebar = ({ userProfile }) => {
+const LeftSidebar = () => {
+  const { user } = useSelector(store => store.user)
+  //  console.log("user---left sidebar--------------", user)
+
   const dispatch = useDispatch()
   const navigate = useNavigate()
-  const { user } = useSelector(store => store.user)
-  // console.log("user-----------------", user)
+
 
   const logoutHandler = async () => {
     try {
@@ -69,7 +71,7 @@ const LeftSidebar = ({ userProfile }) => {
             </div>
             <h1 className="font-bold text-lg ml-2" >Messages</h1>
           </div>
-          <Link to={userProfile?._id ? `/profile/${userProfile._id}` : '/profile/default'} className='flex items-center my-2 px-4 py-2 hover:bg-green-200 hover:cursor-pointer  rounded-full'>
+          <Link to={user?._id ? `/profile/${user._id}` : '/profile/default'} className='flex items-center my-2 px-4 py-2 hover:bg-green-200 hover:cursor-pointer  rounded-full'>
             <div>
               <FaUser size="24px" />
             </div>

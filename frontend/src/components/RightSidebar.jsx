@@ -5,9 +5,10 @@ import Avatar from 'react-avatar'
 import { useSelector } from "react-redux";
 
 
-const RightSidebar = () => {
-    const { otherUsers } = useSelector(store => store.user)
-    // console.log("otherUserss", otherUsers)
+const RightSidebar = ({otherUsers}) => {
+    // const { otherUsers } = useSelector(store => store.user)
+     //console.log("otherUserss", otherUsers)
+
     return (
         <div className="w-[20%]">
             <div className=" flex items-center p-2 bg-gray-100 rounded-full outline-none">
